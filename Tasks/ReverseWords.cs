@@ -17,10 +17,13 @@
         
         {
             string[] words = s.Split(new char[] { ' ' }, StringSplitOptions.None);
+
             for (int i = 0; i < words.Length; i++)
+
             {
                 words[i] = ReverseWord(words[i]);
             }
+
             return string.Join(" ", words);
 
         }
@@ -42,12 +45,16 @@
             {
                 if (char.IsLetter(word[i]))
                 {
+
                     reversed[i] = alphabetChar[alphabetIndex];
                     alphabetIndex++;
+
                 }
                 else
                 {
+
                     reversed[i] = word[i];
+
                 }
             }
             return new string(reversed);

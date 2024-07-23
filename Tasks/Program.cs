@@ -3,7 +3,7 @@
 /// <summary>
 /// Program
 /// </summary>
-public class Program
+public class Program : ReverseWords
 {
     /// <summary>
     /// Main
@@ -12,13 +12,15 @@ public class Program
     {
         while (true)
         {
+
             Console.WriteLine("Enter a line");
             string inputLine = Console.ReadLine();
 
             if (inputLine.ToLower() == "exit")
                 break;
 
-            Console.WriteLine(ReverseWords.ReverseAlphabeticChars(inputLine));
+            Console.WriteLine(ReverseAlphabeticChars(inputLine));
+
         }
     }
 }
