@@ -1,8 +1,8 @@
 ﻿using ReverseEachWord;
-using System;
-using System.Linq;
-using System.Text.RegularExpressions;
 
+/// <summary>
+/// Program
+/// </summary>
 public class Program
 {
     /// <summary>
@@ -18,7 +18,7 @@ public class Program
             if (inputLine.ToLower() == "exit")
                 break;
 
-            Console.WriteLine(ReverseWords.ReverseNonAlphabetic(inputLine));
+            Console.WriteLine(ReverseWords.ReverseAlphabeticChars(inputLine));
         }
     }
 }

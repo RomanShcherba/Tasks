@@ -1,21 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-
-namespace ReverseEachWord
+﻿namespace ReverseEachWord
 {
+
+    /// <summary>
+    /// Reverse words
+    /// </summary>
     public class ReverseWords
     {
+
         /// <summary>
-        /// Reverse non alphabetic word
+        /// Reverse aplhabetic characters of the input string
         /// </summary>
         /// <param name="s">
-        /// String to process
+        /// Input string to process
         /// </param>
-        public static string ReverseNonAlphabetic(string s)
+        public static string ReverseAlphabeticChars(string s)
+        
         {
             string[] words = s.Split(new char[] { ' ' }, StringSplitOptions.None);
             for (int i = 0; i < words.Length; i++)
@@ -25,6 +24,7 @@ namespace ReverseEachWord
             return string.Join(" ", words);
 
         }
+
         /// <summary>
         /// Reversing word
         /// </summary>
@@ -36,13 +36,13 @@ namespace ReverseEachWord
             char[] reversed = new char[word.Length];
             int alphabetIndex = 0;
 
-            var alphaChar = word.Where(c => Char.IsLetter(c)).Reverse().ToArray();
+            var alphabetChar = word.Where(c => char.IsLetter(c)).Reverse().ToArray();
 
             for (int i = 0; i < word.Length; i++)
             {
                 if (char.IsLetter(word[i]))
                 {
-                    reversed[i] = alphaChar[alphabetIndex];
+                    reversed[i] = alphabetChar[alphabetIndex];
                     alphabetIndex++;
                 }
                 else
