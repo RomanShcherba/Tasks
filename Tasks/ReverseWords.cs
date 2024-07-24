@@ -1,6 +1,5 @@
 ﻿namespace Tasks
 {
-
     /// <summary>
     /// Reverse words
     /// </summary>
@@ -14,12 +13,10 @@
         /// Input string to process
         /// </param>
         public static string ReverseAlphabeticChars(string s)
-        
         {
             string[] words = s.Split(new char[] { ' ' }, StringSplitOptions.None);
 
             for (int i = 0; i < words.Length; i++)
-
             {
                 words[i] = ReverseWord(words[i]);
             }
