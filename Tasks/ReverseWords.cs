@@ -1,4 +1,4 @@
-﻿namespace ReverseEachWord
+﻿namespace Tasks
 {
 
     /// <summary>

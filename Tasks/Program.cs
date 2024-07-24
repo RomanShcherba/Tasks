@@ -1,26 +1,39 @@
-﻿using ReverseEachWord;
-
-/// <summary>
-/// Program
-/// </summary>
-public class Program : ReverseWords
+﻿namespace Tasks
 {
     /// <summary>
-    /// Main
+    /// Program
     /// </summary>
-    static void Main()
+    public class Program
     {
-        while (true)
+        /// <summary>
+        /// Main
+        /// </summary>
+        static void Main()
         {
+            while (true)
+            {
 
-            Console.WriteLine("Enter a line");
-            string inputLine = Console.ReadLine();
+                Console.WriteLine("Enter a line");
+                string inputLine = Console.ReadLine();
 
-            if (inputLine.ToLower() == "exit")
-                break;
+                if (inputLine.ToLower() == "exit")
+                    break;
 
-            Console.WriteLine(ReverseAlphabeticChars(inputLine));
+                Console.WriteLine(ReverseWords.ReverseAlphabeticChars(inputLine));
+            }
 
+
+            int[] inp1 = { 1, 1, 2 };
+            int[] inp2 = { 1, 2, 1, 1, 3, 2 };
+
+            
+            int[] output1 = NoDuplicates.RemoveDuplicates(inp1);
+            int[] output2 = NoDuplicates.RemoveDuplicates(inp2);
+
+            Console.WriteLine($"[{string.Join(", ", output1)}], [{string.Join(",",output2)}]");
+            
         }
     }
 }
+
+
