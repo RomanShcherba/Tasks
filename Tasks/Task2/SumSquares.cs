@@ -23,13 +23,13 @@ namespace Tasks.Task2
 
             foreach (var number in list)
             {
-                if (number is List<object>)
+                if (number is List<object>nums)
                 {
-                    summ += SquareSumm((List<object>)number);
+                    summ += SquareSumm(nums);
                 }
-                else if (number is int)
+                else if (number is int num)
                 {
-                    summ += (int)number * (int)number;
+                    summ += num * num;
                 }
             }
             return summ;
