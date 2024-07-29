@@ -8,5 +8,11 @@ namespace Tasks
 {
     public class Program
     {
+        public static void Main(string[] args)
+        {
+            string input = "0xF34BBC";
+            Console.WriteLine($"valid hex: {input}");
+
+        }
     }
 }
