@@ -6,18 +6,26 @@ using System.Threading.Tasks;
 
 namespace Tasks
 {
+    /// <summary>
+    /// Validation hex code
+    /// </summary>
     public class ValidHexCode
     {
-        public static bool ValidHex(string hex)
+        /// <summary>
+        /// Validation of hex code
+        /// </summary>
+        /// <param name="inputHex)">
+        /// input hex code
+        /// </param>
+        /// <returns></returns>
+        public static bool CheckIsHexValid(string inputHex)
         {
-            if (hex.Length == 8)
+            if (inputHex.Length != 8 && !inputHex.StartsWith("0x"))
             {
-                return true;
+                return false;
             }
-            if (hex.StartsWith("0x"))
-            {
-                return true;
-            }
+         
+            return inputHex.Substring(2).All(x => "0123456789ABCDEFabcdef".Contains(x));
         }
     }
 }
