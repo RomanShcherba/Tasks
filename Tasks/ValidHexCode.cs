@@ -20,7 +20,8 @@ namespace Tasks
         /// <returns></returns>
         public static bool CheckIsHexValid(string inputHex)
         {
-            if (inputHex.Length == 8 && inputHex.StartsWith("0x"))
+            int hexLength = 8;
+            if (inputHex.Length == hexLength && inputHex.StartsWith("0x"))
             {
                 return inputHex.Substring(2).All(x => "0123456789ABCDEFabcdef".Contains(x));
             }

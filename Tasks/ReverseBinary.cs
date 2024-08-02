@@ -20,11 +20,9 @@ namespace Tasks
         /// <returns></returns>
         public static int ReversingBinary(int n)
         {
-
             int result = Convert.ToInt32(new string(Convert.ToString(n, 2).Reverse().ToArray()), 2);
 
             return result;
-
         }
     }
 }
