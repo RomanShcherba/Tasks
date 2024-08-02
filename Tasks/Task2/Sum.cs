@@ -3,7 +3,7 @@
     /// <summary>
     /// Summing
     /// </summary>
-    public class Summ
+    public class Sum
     {
         /// <summary>
         /// Summa with ignoring duplicate numbers

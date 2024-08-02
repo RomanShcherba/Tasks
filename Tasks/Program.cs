@@ -12,9 +12,8 @@ namespace Tasks
         /// </summary>
         static void Main()
         {
-            while (false)
+            while (true)
             {
-
                 Console.WriteLine("Enter a line");
                 string inputLine = Console.ReadLine();
 
@@ -30,11 +29,11 @@ namespace Tasks
             int[] inp2 = { 1, 2, 1, 1, 3, 2 };
 
 
-            int[] output1 = NoDuplicates.RemoveDuplicates(inp1);
-            int[] output2 = NoDuplicates.RemoveDuplicates(inp2);
+            int[] output1 = WithoutDuplicates.RemoveDuplicates(inp1);
+            int[] output2 = WithoutDuplicates.RemoveDuplicates(inp2);
 
-            int[] output3 = NoDuplicates.DuplicatesRemove(inp1);
-            int[] output4 = NoDuplicates.DuplicatesRemove(inp2);
+            int[] output3 = WithoutDuplicates.DuplicatesRemove(inp1);
+            int[] output4 = WithoutDuplicates.DuplicatesRemove(inp2);
 
             Console.WriteLine($"[{string.Join(", ", output1)}], [{string.Join(", ", output2)}]");
             Console.WriteLine($"[{string.Join(", ", output3)}], [{string.Join(", ", output4)}]");
@@ -44,7 +43,7 @@ namespace Tasks
             List<int> list1 = new List<int>() { 3, 4, 3, 6 };
             List<int> list2 = new List<int>() { 1, 10, 3, 10, 10 };
 
-            Console.WriteLine($"Sum without duplicates list1:{Summ.SummIgnoringDuplicates(list1)}, list2:{Summ.SummIgnoringDuplicates(list2)}");
+            Console.WriteLine($"Sum without duplicates list1:{Sum.SummIgnoringDuplicates(list1)}, list2:{Sum.SummIgnoringDuplicates(list2)}");
 
             //Square summ
 

@@ -3,7 +3,7 @@
     /// <summary>
     /// No duplicates
     /// </summary>
-    public class NoDuplicates
+    public class WithoutDuplicates
     {
         /// <summary>
         /// Remove duplicates from array
@@ -36,7 +36,6 @@
             HashSet<int> nums = new HashSet<int>();
 
             return numbers.Distinct().ToArray();
-
         }
     }
 }

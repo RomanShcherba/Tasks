@@ -42,16 +42,12 @@
             {
                 if (char.IsLetter(word[i]))
                 {
-
                     reversed[i] = alphabetChar[alphabetIndex];
                     alphabetIndex++;
-
                 }
                 else
                 {
-
                     reversed[i] = word[i];
-
                 }
             }
             return new string(reversed);
