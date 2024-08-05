@@ -11,34 +11,13 @@
         /// <param name="numbers">
         /// numbers
         /// </param>
-        public static int SummIgnoringDuplicates(List<int> numbers)
+        public static int SumIgnoringDuplicates(List<int> numbers)
         {
-            HashSet<int> unique = new HashSet<int>();
-            HashSet<int> duplicates = new HashSet<int>();
+            int sum = 0;
 
-            int summ = 0;
+            sum = numbers.Where(x => numbers.Count(n => n == x) == 1).Sum();
 
-            foreach (int number in numbers)
-            {
-                if (duplicates.Contains(number))
-                {
-                    continue;
-                }
-                if (unique.Contains(number))
-                {
-                    unique.Remove(number);
-                    duplicates.Add(number);
-                }
-                else
-                {
-                    unique.Add(number);
-                }
-            }
-            foreach (int number in unique)
-            {
-                summ += number;
-            }
-            return summ;
+            return sum;
         }
     }
 }

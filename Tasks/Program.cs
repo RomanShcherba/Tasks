@@ -43,7 +43,7 @@ namespace Tasks
             List<int> list1 = new List<int>() { 3, 4, 3, 6 };
             List<int> list2 = new List<int>() { 1, 10, 3, 10, 10 };
 
-            Console.WriteLine($"Sum without duplicates list1:{Sum.SummIgnoringDuplicates(list1)}, list2:{Sum.SummIgnoringDuplicates(list2)}");
+            Console.WriteLine($"Sum without duplicates list1:{Sum.SumIgnoringDuplicates(list1)}, list2:{Sum.SumIgnoringDuplicates(list2)}");
 
             //Square summ
 
