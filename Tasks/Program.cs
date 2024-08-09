@@ -1,26 +1,39 @@
-﻿using ReverseEachWord;
-
-/// <summary>
-/// Program
-/// </summary>
-public class Program : ReverseWords
+Task4_Calculator
+﻿namespace Tasks
 {
     /// <summary>
-    /// Main
+    /// Program
     /// </summary>
-    static void Main()
+    public class Program
     {
-        while (true)
+        /// <summary>
+        /// Main
+        /// </summary>
+        public static void Main()
         {
+            try
+            {
+                Console.WriteLine("Enter number:");
 
-            Console.WriteLine("Enter a line");
-            string inputLine = Console.ReadLine();
+                double a = Convert.ToDouble(Console.ReadLine());
+                string action = Console.ReadLine();
+                double b = Convert.ToDouble(Console.ReadLine());
 
-            if (inputLine.ToLower() == "exit")
-                break;
-
-            Console.WriteLine(ReverseAlphabeticChars(inputLine));
-
+                double result = Calculator.Calculate(a, b, action);
+                Console.WriteLine(result);
+            }
+            catch(ArgumentOutOfRangeException ex) 
+            {
+                Console.WriteLine($"{ex.Message}");
+            }
+            catch (DivideByZeroException ex)
+            {
+                Console.WriteLine($"{ex.Message}\n");
+            }
+            catch (Exception ex)  
+            {
+                Console.WriteLine($"{ex.Message}\n");    
+            }
         }
     }
 }
