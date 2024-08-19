@@ -8,52 +8,62 @@
         /// <summary>
         /// Calculate operations
         /// </summary>
-        /// <param name="a">
+        /// <param name="number1">
         /// First number
         /// </param>
-        /// <param name="b">
+        /// <param name="number2">
         /// Second number
         /// </param>
         /// <param name="actions">
         /// Math operators
         /// </param>
-        /// <exception cref="DivideByZeroException">
-        /// Divide by zero exception
-        /// </exception>
-        /// <exception cref="Exception">
-        /// Exception of zero numbers of roots
-        /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// Argument out of range exception
-        /// </exception>
-        public static double Calculate(double a, double b, string actions)
+        
+        public static double Calculate(double number1, double number2, string actions)
         {
             switch (actions)
             {
                 case "+":
-                    return a + b;
+                    return number1 + number2;
                 case "-":
-                    return a - b;
+                    return number1 - number2;
                 case "*":
-                    return a * b;
+                    return number1 * number2;
                 case "/":
-                    if (b == 0)
+                    if (number2 == 0)
                     {
                         throw new DivideByZeroException("You can't divide by zero");
                     }
-                    return a / b;
+                    return number1 / number2;
                 case "^":
-                    return Math.Pow(a, b);
+                    return Math.Pow(number1, number2);
                 case "V":
-                    if (a > 0 || b > 0)
+                    if (number1 > 0 || number2 > 0)
                     {
-                        return Math.Pow(a, 1.0 / b);
+                        return Math.Pow(number1, 1.0 / number2);
                     }
                     throw new Exception("invalid operation");
                 default:
                 throw new ArgumentOutOfRangeException(nameof(actions), "Out of range");
 
             }
+        }
+        /// <summary>
+        /// Parser for one line 
+        /// </summary>
+        /// <param name="input">
+        /// parsed input
+        /// </param>
+        public static (double, string, double) Parse(string input)
+        {
+            string[] part = input.Split(' ');
+
+            double number1 = Convert.ToDouble(part[0]);
+
+            string action = part[1];
+
+            double number2 = Convert.ToDouble(part[2]);
+
+            return (number1, action, number2);
         }
     }
 }

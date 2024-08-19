@@ -13,16 +13,16 @@ Task4_Calculator
         {
             try
             {
-                Console.WriteLine("Enter number:");
+                Console.WriteLine("Enter expression");
 
-                double a = Convert.ToDouble(Console.ReadLine());
-                string action = Console.ReadLine();
-                double b = Convert.ToDouble(Console.ReadLine());
+                string input = Console.ReadLine()
+    ;
+                (double number1, string action, double number2) = Calculator.Parse(input);
 
-                double result = Calculator.Calculate(a, b, action);
+                double result = Calculator.Calculate(number1, number2, action);
                 Console.WriteLine(result);
             }
-            catch(ArgumentOutOfRangeException ex) 
+            catch (ArgumentOutOfRangeException ex)
             {
                 Console.WriteLine($"{ex.Message}");
             }
@@ -30,10 +30,12 @@ Task4_Calculator
             {
                 Console.WriteLine($"{ex.Message}\n");
             }
-            catch (Exception ex)  
+            catch (Exception ex)
             {
-                Console.WriteLine($"{ex.Message}\n");    
+                Console.WriteLine($"{ex.Message}\n");
             }
         }
+
+       
     }
 }
