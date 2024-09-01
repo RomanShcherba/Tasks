@@ -1,5 +1,5 @@
+
 Task4_Calculator
-﻿namespace Tasks
 {
     /// <summary>
     /// Program
@@ -15,9 +15,9 @@ Task4_Calculator
             {
                 Console.WriteLine("Enter expression");
 
-                string input = Console.ReadLine()
-    ;
+                string input = Console.ReadLine();
                 (double number1, string action, double number2) = Calculator.Parse(input);
+
 
                 double result = Calculator.Calculate(number1, number2, action);
                 Console.WriteLine(result);
@@ -39,3 +39,4 @@ Task4_Calculator
        
     }
 }
+
