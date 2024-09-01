@@ -1,5 +1,3 @@
-
-Task4_Calculator
 {
     /// <summary>
     /// Program
@@ -9,34 +7,31 @@ Task4_Calculator
         /// <summary>
         /// Main
         /// </summary>
-        public static void Main()
+
+        /// <param name="args"></param>
+        public static void Main(string[] args)
         {
-            try
-            {
-                Console.WriteLine("Enter expression");
+            //Validation hex code
 
-                string input = Console.ReadLine();
-                (double number1, string action, double number2) = Calculator.Parse(input);
+            string input = "0xF34BBC";
+            if(ValidHexCode.CheckIsHexValid(input)) 
+            {
+                int decimalValue = Convert.ToInt32(input.Substring(2), 16);
+                string binary = Convert.ToString(decimalValue, 2);
+                Console.WriteLine($"valid hex: {input}, \ndecimal: {decimalValue}, \nbinary: {binary}");
+            }
+            else
+            {
+                Console.WriteLine("invalid hex code");
+            }
 
+            //Convertin to hex
 
-                double result = Calculator.Calculate(number1, number2, action);
-                Console.WriteLine(result);
-            }
-            catch (ArgumentOutOfRangeException ex)
-            {
-                Console.WriteLine($"{ex.Message}");
-            }
-            catch (DivideByZeroException ex)
-            {
-                Console.WriteLine($"{ex.Message}\n");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"{ex.Message}\n");
-            }
+            Console.WriteLine($"\n{ConvertingToHex.ConvertHex("hello world")}\n{ConvertingToHex.ConvertHex("Big Boi")}\n{ConvertingToHex.ConvertHex("Marty Poppinson")}");
+
+            //Reversing binary
+
+            Console.WriteLine($"{ReverseBinary.ReversingBinary(10)}, \n{ReverseBinary.ReversingBinary(12)}, \n{ReverseBinary.ReversingBinary(25)}, \n{ReverseBinary.ReversingBinary(45)}");
         }
-
-       
     }
 }
-
