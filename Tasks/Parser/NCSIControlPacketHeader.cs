@@ -52,14 +52,5 @@
             Console.WriteLine($"Checksum: 0x{Checksum}");
             Console.WriteLine($"Padding: 0x{Padding}");
         }
-
-        public static byte[] ConvertToBigEndian(byte[] data)
-        {
-            if (BitConverter.IsLittleEndian)
-            {
-                Array.Reverse(data);
-            }
-            return data;
-        }
     }
 }
