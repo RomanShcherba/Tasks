@@ -1,3 +1,4 @@
+using System.Collections;
 using Tasks.Parser;
 
 namespace Tasks
@@ -17,6 +18,11 @@ namespace Tasks
                                         .Where(x => x % 2 == 0)
                                         .Select(x => Convert.ToByte(hexString.Substring(x, 2), 16))
                                         .ToArray();
+
+                if (BitConverter.IsLittleEndian)
+                {
+                    Array.Reverse(data);
+                }
 
                 EthernetFrameHeader ethernetHeader = new EthernetFrameHeader(data);
                 ethernetHeader.Display();

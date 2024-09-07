@@ -19,12 +19,12 @@
 
         public NcsiControlPacketHeader(byte[] data)
         {
-            McId = data[15];
-            HeaderRevision = data[16];
-            Reserved1 = data[17];
-            InstanceId = data[18];
-            ControlPacketType = data[19];
-            ChannelId = data[20];
+            McId = data[14];
+            HeaderRevision = data[15];
+            Reserved1 = data[16];
+            InstanceId = data[17];
+            ControlPacketType = data[18];
+            ChannelId = data[19];
             Flags = BitConverter.ToString(data.Skip(20).Take(2).ToArray()).Replace("-", "");
             PayloadLength = BitConverter.ToString(data.Skip(22).Take(2).ToArray()).Replace("-", "");
             Reserved2 = BitConverter.ToString(data.Skip(24).Take(2).ToArray()).Replace("-", "");
