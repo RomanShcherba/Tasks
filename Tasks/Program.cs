@@ -19,11 +19,6 @@ namespace Tasks
                                         .Select(x => Convert.ToByte(hexString.Substring(x, 2), 16))
                                         .ToArray();
 
-                if (BitConverter.IsLittleEndian)
-                {
-                    Array.Reverse(data);
-                }
-
                 EthernetFrameHeader ethernetHeader = new EthernetFrameHeader(data);
                 ethernetHeader.Display();
 
