@@ -1,15 +1,18 @@
-using System.Collections;
 using Tasks.Parser;
 
 namespace Tasks
 {
+    /// <summary>
+    /// Program
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// Main
+        /// </summary>
         static void Main()
         {
-
             string filePath = @"Data\HexInput.txt";
-
             string[] hexStrings = File.ReadAllLines(filePath);
 
             foreach (string hexString in hexStrings)
