@@ -5,18 +5,27 @@
     /// </summary>
     public class EthernetFrameHeader
     {
-        public string DestinationAddress { get; set; }
-        public string SourceAddress { get;  set; }
+        /// <summary>
+        /// Ether Type
+        /// </summary>
         public string EtherType { get; set; }
+        /// <summary>
+        /// Destination Address
+        /// </summary>
+        public string DestinationAddress { get; set; }
+        /// <summary>
+        /// Source Address
+        /// </summary>
+        public string SourceAddress { get;  set; }
 
         /// <summary>
         /// Ethernet frame header parser
         /// </summary>
         public EthernetFrameHeader(byte[] data)
         {
-            DestinationAddress = BitConverter.ToString(data.Take(6).ToArray()).Replace("-", ":");
-            SourceAddress = BitConverter.ToString(data.Skip(6).Take(6).ToArray()).Replace("-", ":");
-            EtherType = BitConverter.ToString(data.Skip(12).Take(2).ToArray()).Replace("-", "");
+            this.DestinationAddress = BitConverter.ToString(data.Take(6).ToArray()).Replace("-", ":");
+            this.SourceAddress = BitConverter.ToString(data.Skip(6).Take(6).ToArray()).Replace("-", ":");
+            this.EtherType = BitConverter.ToString(data.Skip(12).Take(2).ToArray()).Replace("-", "");
         }
         /// <summary>
         /// Display fields

@@ -5,43 +5,85 @@
     /// </summary>
     public class NcsiControlPacketHeader
     {
-        public byte McId { get; set; }
-        public byte HeaderRevision { get; set; }
-        public byte Reserved1 { get; set; }
-        public byte InstanceId { get; set; }
-        public byte ControlPacketType { get; set; }
-        public byte ChannelId { get; set; }
-        public byte Flags { get; set; }
-        public ushort PayloadLength { get; set; }
-        public string Reserved2 { get; set; }
-        public string Reserved3 { get; set; }
-        public string ResponseCode { get; set; }
-        public string ReasonCode { get; set; }
+        /// <summary>
+        /// Check sumary
+        /// </summary>
         public string Checksum { get; set; }
+        /// <summary>
+        /// Control Packet Type
+        /// </summary>
+        public byte ControlPacketType { get; set; }
+        /// <summary>
+        /// Channel Id
+        /// </summary>
+        public byte ChannelId { get; set; }
+        /// <summary>
+        /// Flags
+        /// </summary>
+        public byte Flags { get; set; }
+        /// <summary>
+        /// Header Revision
+        /// </summary>
+        public byte HeaderRevision { get; set; }
+        /// <summary>
+        /// Instance Id
+        /// </summary>
+        public byte InstanceId { get; set; }
+        /// <summary>
+        /// Management Controller ID
+        /// </summary>
+        public byte McId { get; set; }
+        /// <summary>
+        /// Payload Length
+        /// </summary>
+        public ushort PayloadLength { get; set; }
+        /// <summary>
+        /// Padding
+        /// </summary>
         public string Padding { get; set; }
-
+        /// <summary>
+        /// Reversed 1
+        /// </summary>
+        public byte Reserved1 { get; set; }
+        /// <summary>
+        /// Reserved 2
+        /// </summary>
+        public string Reserved2 { get; set; }
+        /// <summary>
+        /// Resereved 3
+        /// </summary>
+        public string Reserved3 { get; set; }
+        /// <summary>
+        /// Response Code
+        /// </summary>
+        public string ResponseCode { get; set; }
+        /// <summary>
+        /// Reason Code
+        /// </summary>
+        public string ReasonCode { get; set; }
         /// <summary>
         /// NCSI packet header parser
         /// </summary>
+  
         public NcsiControlPacketHeader(byte[] data)
         {
-            McId = data[14];
-            HeaderRevision = data[15];
-            Reserved1 = data[16];
-            InstanceId = data[17];
-            ControlPacketType = data[18];
-            ChannelId = data[19];
+            this.McId = data[0];
+            this.HeaderRevision = data[15];
+            this.Reserved1 = data[16];
+            this.InstanceId = data[17];
+            this.ControlPacketType = data[18];
+            this.ChannelId = data[19];
 
             byte flagsByte = data[20];
-            Flags = (byte)(flagsByte & 0x0F);
+            this.Flags = (byte)(flagsByte & 0x0F);
             ushort payloadLength = BitConverter.ToUInt16(data, 21);
-            PayloadLength = (ushort)(payloadLength & 0x0FFF);
-            Reserved2 = BitConverter.ToString(data.Skip(23).Take(4).ToArray()).Replace("-", "");
-            Reserved3 = BitConverter.ToString(data.Skip(27).Take(4).ToArray()).Replace("-", "");
-            ResponseCode = BitConverter.ToString(data.Skip(31).Take(2).ToArray()).Replace("-", "");
-            ReasonCode = BitConverter.ToString(data.Skip(33).Take(2).ToArray()).Replace("-", "");
-            Checksum = BitConverter.ToString(data.Skip(35).Take(4).ToArray()).Replace("-", "");
-            Padding = BitConverter.ToString(data.Skip(39).Take(24).ToArray()).Replace("-", "");
+            this.PayloadLength = (ushort)(payloadLength & 0x0FFF);
+            this.Reserved2 = BitConverter.ToString(data.Skip(23).Take(4).ToArray()).Replace("-", "");
+            this.Reserved3 = BitConverter.ToString(data.Skip(27).Take(4).ToArray()).Replace("-", "");
+            this.ResponseCode = BitConverter.ToString(data.Skip(31).Take(2).ToArray()).Replace("-", "");
+            this.ReasonCode = BitConverter.ToString(data.Skip(33).Take(2).ToArray()).Replace("-", "");
+            this.Checksum = BitConverter.ToString(data.Skip(35).Take(4).ToArray()).Replace("-", "");
+            this.Padding = BitConverter.ToString(data.Skip(39).Take(24).ToArray()).Replace("-", "");
         }
 
         /// <summary>
@@ -49,21 +91,7 @@
         /// </summary>
         public void Display()
         {
-            Console.WriteLine("\nNCSI Control Packet header:");
-            Console.WriteLine($"MC ID: 0x{McId:X2}");
-            Console.WriteLine($"Header revision: 0x{HeaderRevision:X2}");
-            Console.WriteLine($"Reserved: 0x{Reserved1:X2}");
-            Console.WriteLine($"Instance ID (IID): 0x{InstanceId:X2}");
-            Console.WriteLine($"Control Packet type: 0x{ControlPacketType:X2}");
-            Console.WriteLine($"Channel ID: 0x{ChannelId:X2}");
-            Console.WriteLine($"Flags: 0x{Flags:X2}");
-            Console.WriteLine($"Payload length: 0x{PayloadLength:X3}"); 
-            Console.WriteLine($"Reserved2: 0x{Reserved2}");
-            Console.WriteLine($"Reserved3: 0x{Reserved3}");
-            Console.WriteLine($"Response Code: 0x{ResponseCode}");
-            Console.WriteLine($"Reason Code: 0x{ReasonCode}");
-            Console.WriteLine($"Checksum: 0x{Checksum}");
-            Console.WriteLine($"Padding: 0x{Padding}");
+            Console.WriteLine($"\nNCSI Control Packet header: \nMC ID: 0x{McId:X2},\nHeader revision: 0x{HeaderRevision:X2}, \nReserved: 0x{Reserved1:X2}, \nInstance ID (IID): 0x{InstanceId:X2}, \nControl Packet type: 0x{ControlPacketType:X2}, \nChannel ID: 0x{ChannelId:X2}, \nFlags: 0x{Flags:X2}, \nPayload length: 0x{PayloadLength:X3}, \nReserved2: 0x{Reserved2}, \nReserved3: 0x{Reserved3}, \nResponse Code: 0x{ResponseCode}, \nReason Code: 0x{ReasonCode}, \nChecksum: 0x{Checksum}, \nPadding: 0x{Padding}");
         }
     }
 }
