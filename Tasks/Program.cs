@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+Task6_Matrix
 
 namespace Tasks
 {
     public static void Main()
     {
+
 
     }
 }
