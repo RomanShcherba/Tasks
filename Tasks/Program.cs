@@ -1,3 +1,6 @@
+using Tasks.Parser;
+
+namespace Tasks
 {
     /// <summary>
     /// Program
@@ -7,31 +10,24 @@
         /// <summary>
         /// Main
         /// </summary>
-
-        /// <param name="args"></param>
-        public static void Main(string[] args)
+        static void Main()
         {
-            //Validation hex code
+            string filePath = @"Data\HexInput.txt";
+            string[] hexStrings = File.ReadAllLines(filePath);
 
-            string input = "0xF34BBC";
-            if(ValidHexCode.CheckIsHexValid(input)) 
+            foreach (string hexString in hexStrings)
             {
-                int decimalValue = Convert.ToInt32(input.Substring(2), 16);
-                string binary = Convert.ToString(decimalValue, 2);
-                Console.WriteLine($"valid hex: {input}, \ndecimal: {decimalValue}, \nbinary: {binary}");
+                byte[] data = Enumerable.Range(0, hexString.Length)
+                                        .Where(x => x % 2 == 0)
+                                        .Select(x => Convert.ToByte(hexString.Substring(x, 2), 16))
+                                        .ToArray();
+
+                EthernetFrameHeader ethernetHeader = new EthernetFrameHeader(data);
+                ethernetHeader.Display();
+
+                NcsiControlPacketHeader ncsiControlPacketHeader = new NcsiControlPacketHeader(data);
+                ncsiControlPacketHeader.Display();
             }
-            else
-            {
-                Console.WriteLine("invalid hex code");
-            }
-
-            //Convertin to hex
-
-            Console.WriteLine($"\n{ConvertingToHex.ConvertHex("hello world")}\n{ConvertingToHex.ConvertHex("Big Boi")}\n{ConvertingToHex.ConvertHex("Marty Poppinson")}");
-
-            //Reversing binary
-
-            Console.WriteLine($"{ReverseBinary.ReversingBinary(10)}, \n{ReverseBinary.ReversingBinary(12)}, \n{ReverseBinary.ReversingBinary(25)}, \n{ReverseBinary.ReversingBinary(45)}");
         }
     }
 }
