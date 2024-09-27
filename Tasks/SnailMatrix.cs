@@ -11,11 +11,11 @@ namespace Tasks
     {
         public static void MatrixNumberRange (int rows, int columns)
         {
-            if (rows < 0 || rows > 101)
+            if (rows < 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(rows));
             }
-            if (columns < 0 || columns > 101)
+            if (columns < 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(columns));
             }
@@ -53,7 +53,6 @@ namespace Tasks
             {
                 for(int y = 0;y < columns; y++)
                 {
-
                 }
             }
         }
