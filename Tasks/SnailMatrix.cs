@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -9,17 +10,9 @@ namespace Tasks
 {
     public class SnailArray
     {
-        public static void MatrixNumberRange (int rows, int columns)
-        {
-            if (rows < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(rows));
-            }
-            if (columns < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(columns));
-            }
-        }
+        /// <summary>
+        /// 
+        /// </summary>
         public static void Matrix(int[,] matrix, Random random)
         {
             int rows = matrix.GetLength(0);
@@ -33,17 +26,31 @@ namespace Tasks
                 }
             }
         }
-        public static int ValidInput()
+        /// <summary>
+        /// 
+        /// </summary>
+        public static (int rows, int columns) ValidInput()
         {
-            int input;
+            int rows, columns;
 
-            while (int.TryParse(Console.ReadLine(), out input) || input <= 0 || input >= 46340)
+            do
             {
-                 Console.WriteLine("Invalid input");
+                Console.WriteLine("Enter number of rows");
             }
-            return input;
-        }
 
+            while (!int.TryParse(Console.ReadLine(), out rows) || rows <= 0 || rows >= 46340);
+
+            do
+            {
+                Console.WriteLine("Enter number of columns");
+            }
+            while (!int.TryParse(Console.ReadLine(), out columns) || columns <= 0 || columns >= 46340);
+   
+            return (rows, columns);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
         public static void PrintDiagonal(int[,] matrix)
         {
             int rows = matrix.GetLength(0);
@@ -53,7 +60,14 @@ namespace Tasks
             {
                 for(int y = 0;y < columns; y++)
                 {
+                    if (x == y)
+                    {
+
+                    }
+                    Console.Write(matrix[x, y].ToString().PadLeft(4));
+
                 }
+                Console.WriteLine();
             }
         }
     }
