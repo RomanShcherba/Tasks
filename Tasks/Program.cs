@@ -4,15 +4,16 @@ namespace Tasks
     {
         public static void Main()
         {
-            var (rows, columns) = SnailArray.ValidInput();
+            var (rows, columns) = SnailMatrix.ValidInput();
             Console.WriteLine($"Valid rows {rows} and columns {columns}");
 
-            int[,] matrix = new int[rows, columns];
-            Random random = new Random();
-            SnailArray.Matrix(matrix, random);
-
+            int[,] matrix = SnailMatrix.Matrix(rows, columns);
+          
             Console.WriteLine();
-            SnailArray.PrintDiagonal(matrix);
+            SnailMatrix.PrintDiagonal(matrix);
+
+            int diagonal = SnailMatrix.CalculateMainDiagonal(matrix);
+            Console.WriteLine($"Sum of main diagonal {diagonal}");
         }
     }
 }
