@@ -6,20 +6,27 @@ namespace Tasks
         /// <summary>
         /// Matrix with random numbers
         /// </summary>
+        /// <param name="rows">
+        /// rows
+        /// </param>
+        /// <param name="columns">
+        /// columns
+        /// </param>
         public static int[,] Matrix(int rows, int columns)
         {
             Random random = new Random();
             int[,] matrix = new int[rows, columns];
 
-            for (int x = 0; x < rows; x++)
+            for (int row = 0; row < rows; row++)
             {
-                for (int y = 0; y < columns; y++)
+                for (int column = 0; column < columns; column++)
                 {
-                    matrix[x, y] = random.Next(0, 101);
+                    matrix[row, column] = random.Next(0, 101);
                 }
             }
             return matrix;
         }
+
         /// <summary>
         /// Valid input check
         /// </summary>
@@ -43,14 +50,21 @@ namespace Tasks
    
             return (rows, columns);
         }
+
         /// <summary>
         /// Print main diagonal
         /// </summary>
-        public static void PrintDiagonal(int[,] matrix)
+        /// <param name="matrix">
+        /// matrix
+        /// </param>
+        /// <param name="rows">
+        /// rows
+        /// </param>
+        /// <param name="columns">
+        /// columns
+        /// </param>
+        public static void PrintDiagonal(int[,] matrix, int rows, int columns)
         {
-            int rows = matrix.GetLength(0);
-            int columns = matrix.GetLength(1);
-            
             for(int x = 0;x < rows; x++)
             {
                 for(int y = 0;y < columns; y++)
@@ -65,13 +79,21 @@ namespace Tasks
                 Console.WriteLine();
             }
         }
+
         /// <summary>
         /// Calculate main diagonal
         /// </summary>
-        public static int CalculateMainDiagonal(int[,] matrix)
+        /// <param name="matrix">
+        /// Matrix
+        /// </param>
+        /// <param name="rows">
+        /// Rows
+        /// </param>
+        /// <param name="columns">
+        /// Columns
+        /// </param>
+        public static int CalculateMainDiagonal(int[,] matrix, int rows, int columns)
         {
-            int rows = matrix.GetLength(0);
-            int columns = matrix.GetLength(1);
             int diagonal = 0;
             int size = Math.Min(rows, columns);
             for (int x = 0; x < size; x++) 
@@ -80,13 +102,21 @@ namespace Tasks
             }
             return diagonal;
         }
+
         /// <summary>
         /// Snail shell order
         /// </summary>
-        public static int[] SnailShellOrder(int[,] matrix)
+        /// <param name="matrix">
+        /// Matrix
+        /// </param>
+        /// <param name="rows">
+        /// Rows
+        /// </param>
+        /// <param name="columns">
+        /// Columns
+        /// </param>
+        public static int[] SnailShellOrder(int[,] matrix, int rows, int columns)
         {
-            int rows = matrix.GetLength(0);
-            int columns = matrix.GetLength(1);
             int[] snailOrder = new int[rows * columns];
             int index = 0;
             int top = 0, bottom = rows - 1, left = 0, right = columns - 1;
