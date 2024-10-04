@@ -1,3 +1,5 @@
+Task6_SnaiMatrix
+
 namespace Tasks
 {
     /// <summary>
@@ -24,6 +26,8 @@ namespace Tasks
             Console.WriteLine("\nElemetns sorted in snail shell order:");
             int[] snailOrder = SnailMatrix.SnailShellOrder(matrix, rows, columns);
             Console.WriteLine(string.Join(",", snailOrder));
+
+       
         }
     }
 }
