@@ -123,18 +123,22 @@ namespace Tasks
 
             while (top <= bottom && left <= right)
             {
+                //moving right
                 for (int i = left; i <= right; i++)
                     snailOrder[index++] = matrix[top, i];
                 top++;
 
+                //moving bottom
                 for (int i = top; i <= bottom; i++)
                     snailOrder[index++] = matrix[i, right];
                 right--;
 
+                //moving left
                 for (int i = right; i >= left; i--)
                      snailOrder[index++] = matrix[bottom, i];
                 bottom--;
-       
+
+                //moving top
                 for (int i = bottom; i >= top; i--)
                     snailOrder[index++] = matrix[i, left];
                 left++;
