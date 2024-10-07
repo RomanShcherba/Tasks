@@ -1,4 +1,4 @@
-using Tasks.Parser;
+Task6_SnaiMatrix
 
 namespace Tasks
 {
@@ -10,24 +10,24 @@ namespace Tasks
         /// <summary>
         /// Main
         /// </summary>
-        static void Main()
+        public static void Main()
         {
-            string filePath = @"Data\HexInput.txt";
-            string[] hexStrings = File.ReadAllLines(filePath);
+            var (rows, columns) = SnailMatrix.ValidInput();
+            Console.WriteLine($"\nValid rows {rows} and columns {columns}");
 
-            foreach (string hexString in hexStrings)
-            {
-                byte[] data = Enumerable.Range(0, hexString.Length)
-                                        .Where(x => x % 2 == 0)
-                                        .Select(x => Convert.ToByte(hexString.Substring(x, 2), 16))
-                                        .ToArray();
+            int[,] matrix = SnailMatrix.Matrix(rows, columns);
+          
+            Console.WriteLine();
+            SnailMatrix.PrintDiagonal(matrix, rows, columns);
 
-                EthernetFrameHeader ethernetHeader = new EthernetFrameHeader(data);
-                ethernetHeader.Display();
+            int diagonal = SnailMatrix.CalculateMainDiagonal(matrix, rows, columns);
+            Console.WriteLine($"\nSum of main diagonal {diagonal}");
 
-                NcsiControlPacketHeader ncsiControlPacketHeader = new NcsiControlPacketHeader(data);
-                ncsiControlPacketHeader.Display();
-            }
+            Console.WriteLine("\nElemetns sorted in snail shell order:");
+            int[] snailOrder = SnailMatrix.SnailShellOrder(matrix, rows, columns);
+            Console.WriteLine(string.Join(",", snailOrder));
+
+       
         }
     }
 }
