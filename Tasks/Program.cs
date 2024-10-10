@@ -1,9 +1,3 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Tasks
 {
     /// <summary>
@@ -14,6 +8,7 @@ namespace Tasks
         /// <summary>
         /// Main
         /// </summary>
+        Task7_inheritance
         public static void Main(string[] args)
         {
             Shark shark = new("Sharp tooth", 20, "Old");
@@ -28,6 +23,7 @@ namespace Tasks
 
             Monkey monkey = new("Grunk", 7, "Eating banana");
             Console.WriteLine(monkey.Introduce());
+
         }
     }
 }
