@@ -1,5 +1,3 @@
-using Tasks.Parser;
-
 namespace Tasks
 {
     /// <summary>
@@ -10,24 +8,22 @@ namespace Tasks
         /// <summary>
         /// Main
         /// </summary>
-        static void Main()
+        Task7_inheritance
+        public static void Main(string[] args)
         {
-            string filePath = @"Data\HexInput.txt";
-            string[] hexStrings = File.ReadAllLines(filePath);
+            Shark shark = new("Sharp tooth", 20, "Old");
+            Console.WriteLine(shark.Introduce());
 
-            foreach (string hexString in hexStrings)
-            {
-                byte[] data = Enumerable.Range(0, hexString.Length)
-                                        .Where(x => x % 2 == 0)
-                                        .Select(x => Convert.ToByte(hexString.Substring(x, 2), 16))
-                                        .ToArray();
+            Cat cat = new("Lucky", 2, "Sleepy");
+            Console.WriteLine(cat.Introduce());
 
-                EthernetFrameHeader ethernetHeader = new EthernetFrameHeader(data);
-                ethernetHeader.Display();
+            Dog dog = new("Bern", 5, "Excited", "John");
+            Console.WriteLine(dog.Introduce());
+            Console.WriteLine(dog.GreetMaster());
 
-                NcsiControlPacketHeader ncsiControlPacketHeader = new NcsiControlPacketHeader(data);
-                ncsiControlPacketHeader.Display();
-            }
+            Monkey monkey = new("Grunk", 7, "Eating banana");
+            Console.WriteLine(monkey.Introduce());
+
         }
     }
 }
