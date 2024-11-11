@@ -1,3 +1,5 @@
+Task6_SnaiMatrix
+
 namespace Tasks
 {
     /// <summary>
@@ -7,22 +9,25 @@ namespace Tasks
     {
         /// <summary>
         /// Main
-        /// </summary>
-        Task7_inheritance
-        public static void Main(string[] args)
+
+        public static void Main()
         {
-            Shark shark = new("Sharp tooth", 20, "Old");
-            Console.WriteLine(shark.Introduce());
+            var (rows, columns) = SnailMatrix.ValidInput();
+            Console.WriteLine($"\nValid rows {rows} and columns {columns}");
 
-            Cat cat = new("Lucky", 2, "Sleepy");
-            Console.WriteLine(cat.Introduce());
+            int[,] matrix = SnailMatrix.Matrix(rows, columns);
+          
+            Console.WriteLine();
+            SnailMatrix.PrintDiagonal(matrix, rows, columns);
 
-            Dog dog = new("Bern", 5, "Excited", "John");
-            Console.WriteLine(dog.Introduce());
-            Console.WriteLine(dog.GreetMaster());
+            int diagonal = SnailMatrix.CalculateMainDiagonal(matrix, rows, columns);
+            Console.WriteLine($"\nSum of main diagonal {diagonal}");
 
-            Monkey monkey = new("Grunk", 7, "Eating banana");
-            Console.WriteLine(monkey.Introduce());
+            Console.WriteLine("\nElemetns sorted in snail shell order:");
+            int[] snailOrder = SnailMatrix.SnailShellOrder(matrix, rows, columns);
+            Console.WriteLine(string.Join(",", snailOrder));
+
+       
 
         }
     }
